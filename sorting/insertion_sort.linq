@@ -2,22 +2,23 @@
 
 void Main()
 {
-	insertionSort2(0, new List<int> { 1, 4, 3, 5, 6, 2});
+	insertionSort2(0, new List<int> { 2, 3, 4, 1});
 }
 
 
 public static void insertionSort2(int n, List<int> arr)
 {
+	// 2 3 4 1
 	for(int i = 1; i < arr.Count(); i ++)
 	{
 		var j = i;
-		while(j > 0 && arr[j] < arr[j-1])
+		var key = arr[i].Dump("key");
+		while(j > 0 && key < arr[j-1])
 		{
-			var arrj = arr[j];
 			arr[j] = arr[j-1];
-			arr[j-1] = arrj;
 			j--;
 		}
+		arr[j] = key;
 		
 		Print(arr);
 	}
