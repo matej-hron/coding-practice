@@ -14,11 +14,9 @@ public string Sum(string num1, string num2)
     while(a + b + shift > 0)
     {
         var x = (a + b + shift);
-        Console.Write($"x:{x}, shift:{shift}, a:{a}, b: {b} ");
         res.Add(x % 10);
 
         shift = x / 10;
-        Console.WriteLine($"new shift: {shift}");
         index++;
         a = Get(nArr1, index);
         b = Get(nArr2, index);
