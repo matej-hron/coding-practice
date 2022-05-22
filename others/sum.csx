@@ -2,12 +2,9 @@
 
 public string Sum(string num1, string num2)
 {
-    var nArr1 = num1.ToCharArray().Select(ch => (int)ch - 48).Reverse().ToArray();
-    var nArr2 = num2.ToCharArray().Select(ch => (int)ch - 48).Reverse().ToArray();
-
     var index = 0;
-    var a = Get(nArr1, index);
-    var b = Get(nArr2,index);
+    var a = Get(num1, index);
+    var b = Get(num2, index);
     var shift = 0;
     var res = new List<int>();
 
@@ -18,15 +15,15 @@ public string Sum(string num1, string num2)
 
         shift = x / 10;
         index++;
-        a = Get(nArr1, index);
-        b = Get(nArr2, index);
+        a = Get(num1, index);
+        b = Get(num2, index);
         
     }
     res.Reverse();
     return string.Join(string.Empty, res);
 }
 
-public int Get(int[] arr, int index) => index >= arr.Length ? 0 : arr[index];
+public int Get(string arr, int index) => index >= arr.Length ? 0 : (int)arr[^(index+1)] - 48;
 
 
 
