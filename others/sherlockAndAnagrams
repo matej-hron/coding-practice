@@ -1,0 +1,35 @@
+static float sherlockAndAnagrams(string s)
+{
+    var substrCountMap = new Dictionary<string, int>();
+    
+    for(int i = 0; i < s.Length; i ++)
+    {
+        for(int length = 1; length <= s.Length - i; length++)
+        {
+            var substr = s.Substring(i, length);
+            var sorted = new string(substr.OrderBy(x => x).ToArray());
+            //Console.WriteLine(sorted);
+            if(substrCountMap.ContainsKey(sorted))
+            {
+                substrCountMap[sorted]++;
+            }
+            else{
+                substrCountMap[sorted] = 1;
+            }
+        }
+    }
+
+    var groups = substrCountMap.Select(x => x.Value).Where(x => x > 1);
+    var combinations = groups.Select(x => Fact(x) / Fact(x-2) / 2);
+    return combinations.Sum();
+}
+
+
+
+static float Fact(int i) => i == 0 ? 1 : i * Fact(i - 1);
+
+
+
+
+var x = sherlockAndAnagrams("kkkk");
+Console.WriteLine(x);
