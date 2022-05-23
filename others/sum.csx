@@ -2,21 +2,20 @@
 
 public string Sum(string num1, string num2)
 {
-    var index = 0;
-    var a = Get(num1, index);
-    var b = Get(num2, index);
+   
     var shift = 0;
     var res = new List<int>();
 
-    while(a + b + shift > 0)
+    for(var index = 0; index <= Math.Max(num1.Length, num2.Length); index++)
     {
+        var a = Get(num1, index);
+        var b = Get(num2, index);
         var x = (a + b + shift);
         res.Add(x % 10);
+        Console.WriteLine($"{a} + {b} + {shift}");
 
         shift = x / 10;
-        index++;
-        a = Get(num1, index);
-        b = Get(num2, index);
+       
         
     }
     res.Reverse();
@@ -27,4 +26,4 @@ public int Get(string arr, int index) => index >= arr.Length ? 0 : (int)arr[^(in
 
 
 
-Console.WriteLine($"1+1 = {Sum("15", "6")}");
+Console.WriteLine($"100+100 = {Sum("100", "100")}");
